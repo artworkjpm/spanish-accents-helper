@@ -9,6 +9,11 @@ import { a } from "../app/listado-general";
 export class AppComponent implements OnInit {
 	title = "spanish-accents-helper";
 	ngOnInit() {
-		console.log(a);
+		this.filterOs();
+	}
+
+	filterOs() {
+		let Os = a.filter((item) => item.includes("ó"));
+		console.log(Os);
 	}
 }
