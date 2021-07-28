@@ -9,7 +9,7 @@ import { FormsModule, FormGroup, FormBuilder, Validators } from "@angular/forms"
 })
 export class AppComponent implements OnInit {
 	title = "spanish-accents-helper";
-	test = "gustaria coger el portatil el lunes y ver mi bebe despues, y irme a nacurutu";
+	test = "gustaria coger el portatil el lunes y ver mi bebe despues, y irme a portatil!";
 	test2 = "quieria decir que el bano esta sucio y pense que veias";
 	form: FormGroup = new FormGroup({});
 
@@ -21,9 +21,9 @@ export class AppComponent implements OnInit {
 	}
 
 	getText() {
-		console.log(this.form.controls["textBox"].value);
+		console.log(this.form.controls["textBox"].value.replace(/[?!]/g, ""));
 		this.form.patchValue({
-			textBox: editText(this.form.controls["textBox"].value),
+			textBox: editText(this.form.controls["textBox"].value.replace(/[?!]/g, "")),
 		});
 	}
 }
