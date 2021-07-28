@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { a } from "../app/listado-general";
+import { editText } from "./utilities/editText";
 
 @Component({
 	selector: "app-root",
@@ -8,12 +8,9 @@ import { a } from "../app/listado-general";
 })
 export class AppComponent implements OnInit {
 	title = "spanish-accents-helper";
+	test = "gustaria coger el portatil el lunes y ver mi bebe despues, y irme a nacurutu";
 	ngOnInit() {
-		this.filterOs();
-	}
-
-	filterOs() {
-		let Os = a.filter((item) => item.includes("ó"));
-		console.log(Os);
+		console.log(this.test);
+		editText(this.test);
 	}
 }
