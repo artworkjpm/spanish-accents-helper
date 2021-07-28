@@ -31,4 +31,6 @@ export function editText(bodyText: string) {
 	});
 
 	console.log(bodyTextArray.join(" "));
+
+	return bodyTextArray.join(" ");
 }
