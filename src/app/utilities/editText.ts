@@ -12,35 +12,18 @@ import { objectU } from "../dictionaries/objects/objectU";
 		UsSin.forEach((key, i) => (keyValues[key] = Us[i]));
 		console.log(keyValues); */
 
+const allObjects = {
+	...objectA,
+	...objectE,
+	...objectI,
+	...objectO,
+	...objectU,
+};
+
 export function editText(bodyText: string) {
 	let bodyTextArray = bodyText.split(" ");
-
 	bodyTextArray.forEach((item, i) => {
-		for (const [key, value] of Object.entries(objectA)) {
-			if (item === key) {
-				bodyTextArray[i] = value;
-			}
-		}
-
-		for (const [key, value] of Object.entries(objectI)) {
-			if (item === key) {
-				bodyTextArray[i] = value;
-			}
-		}
-
-		for (const [key, value] of Object.entries(objectE)) {
-			if (item === key) {
-				bodyTextArray[i] = value;
-			}
-		}
-
-		for (const [key, value] of Object.entries(objectO)) {
-			if (item === key) {
-				bodyTextArray[i] = value;
-			}
-		}
-
-		for (const [key, value] of Object.entries(objectU)) {
+		for (const [key, value] of Object.entries(allObjects)) {
 			if (item === key) {
 				bodyTextArray[i] = value;
 			}
