@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { editText } from "./utilities/editText";
-import { FormsModule, FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
 	selector: "app-root",
@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
 	}
 
 	getText() {
-		console.log(this.form.controls["textBox"].value.replace(/[?!]/g, ""));
 		this.form.patchValue({
 			textBox: editText(this.form.controls["textBox"].value.replace(/[?!]/g, "")),
 		});
