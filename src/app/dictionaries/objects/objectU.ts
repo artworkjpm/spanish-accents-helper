@@ -479,7 +479,6 @@ export const objectU = {
 	tururu: "tururú",
 	tuturutu: "tuturutú",
 	tutu: "tutú",
-	tu: "tú",
 	tubano: "túbano",
 	tumido: "túmido",
 	tumulo: "túmulo",

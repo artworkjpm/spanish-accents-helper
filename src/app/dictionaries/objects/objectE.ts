@@ -497,7 +497,6 @@ export const objectE = {
 	decuplo: "décuplo",
 	dedalo: "dédalo",
 	deficit: "déficit",
-	del: "dél",
 	delfico: "délfico",
 	demode: "démodé",
 	dermico: "dérmico",

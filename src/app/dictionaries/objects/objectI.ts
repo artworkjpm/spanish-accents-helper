@@ -4092,7 +4092,6 @@ export const objectI = {
 	surubi: "surubí",
 	suruvi: "suruví",
 	suizaro: "suízaro",
-	si: "sí",
 	siculo: "sículo",
 	sifilis: "sífilis",
 	silaba: "sílaba",

@@ -1754,7 +1754,6 @@ export const objectA = {
 	paroniquiaceo: "paroniquiáceo",
 	paronomasticamente: "paronomásticamente",
 	paronomastico: "paronomástico",
-	para: "pará",
 	parabola: "parábola",
 	paraclito: "paráclito",
 	parafrasis: "paráfrasis",
