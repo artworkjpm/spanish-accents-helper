@@ -3,7 +3,9 @@
 		<h1>Add accents (known as tildes in Spanish) to Spanish text (á, é, í, ó, ú, ñ)</h1>
 		<form [formGroup]="form">
 			<textarea type="text" formControlName="textBox" #txt></textarea>
-			<button (click)="getText()">Add Accents</button>
+			<button type="button" class="button" [ngClass]="{ 'button--loading': loading }" (click)="getText()">
+				<span class="button__text">{{ loading ? "" : "Add Accents" }}</span>
+			</button>
 			<button class="right" (click)="copyInputMessage(txt)"><img src="/assets/images/copy-regular.svg" alt="image" width="20" /></button>
 		</form>
 	</main>

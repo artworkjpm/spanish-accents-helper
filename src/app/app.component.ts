@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 	test = "gustaria darte un truco para tu portatil, hemos enganado";
 	test2 = "quieria decir que el bano esta sucio y pense que veias";
 	form: FormGroup = new FormGroup({});
+	loading = false;
 
 	constructor(private fb: FormBuilder) {}
 	ngOnInit() {
@@ -21,9 +22,11 @@ export class AppComponent implements OnInit {
 	}
 
 	getText() {
+		this.loading = true;
 		this.form.patchValue({
 			textBox: editText(this.form.controls["textBox"].value),
 		});
+		setTimeout(() => (this.loading = false), 500);
 	}
 
 	copyInputMessage(inputElement: HTMLTextAreaElement) {
