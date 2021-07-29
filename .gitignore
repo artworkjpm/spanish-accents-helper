@@ -43,8 +43,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-
-/dictionary-stuff
-/listado-general.ts
-/listado-general.txt
