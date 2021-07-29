@@ -45,6 +45,6 @@ testem.log
 Thumbs.db
 
 
-/src/app/dictionaries/arrays
+/arrays
 /listado-general.ts
 /listado-general.txt
