@@ -26,4 +26,10 @@ export class AppComponent implements OnInit {
 			textBox: editText(this.form.controls["textBox"].value.replace(/[?!]/g, "")),
 		});
 	}
+
+	copyInputMessage(inputElement: HTMLTextAreaElement) {
+		inputElement.select();
+		document.execCommand("copy");
+		inputElement.setSelectionRange(0, 0);
+	}
 }
