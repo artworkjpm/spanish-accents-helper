@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
 	getText() {
 		this.form.patchValue({
-			textBox: editText(this.form.controls["textBox"].value.replace(/[?!]/g, "")),
+			textBox: editText(this.form.controls["textBox"].value),
 		});
 	}
 

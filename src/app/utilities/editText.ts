@@ -35,13 +35,23 @@ const allObjects = {
 };
 
 export function editText(bodyText: string) {
-	let bodyTextArray = bodyText.split(" ");
+	let bodyTextArray = bodyText.split(/ |(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€|(?=\£))/g);
+	/* console.log(bodyTextArray); */
+
 	bodyTextArray.forEach((item, i) => {
+		let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
+
 		for (const [key, value] of Object.entries(allObjects)) {
 			if (item === key) {
 				bodyTextArray[i] = value;
+			} else if (specialCharacters.some((el) => item.includes(el))) {
+				bodyTextArray[i - 1] += item;
+				bodyTextArray.splice(i, 1);
+				return;
 			}
 		}
 	});
+
+	/* 	console.log(bodyTextArray.join(" ")); */
 	return bodyTextArray.join(" ");
 }
