@@ -1307,7 +1307,6 @@ export const objectE = {
 	quindecimo: "quindécimo",
 	quingentesimo: "quingentésimo",
 	quinque: "quinqué",
-	que: "qué",
 	radioelectrico: "radioeléctrico",
 	radiotelefono: "radioteléfono",
 	radioterapeutico: "radioterapéutico",

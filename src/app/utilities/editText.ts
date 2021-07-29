@@ -42,7 +42,7 @@ export function editText(bodyText: string) {
 		let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
 
 		for (const [key, value] of Object.entries(allObjects)) {
-			if (item === key) {
+			if (item.toLowerCase() === key) {
 				bodyTextArray[i] = value;
 			} else if (specialCharacters.some((el) => item.includes(el))) {
 				bodyTextArray[i - 1] += item;
