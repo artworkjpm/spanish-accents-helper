@@ -36,7 +36,6 @@ const allObjects = {
 
 export function editText(bodyText: string) {
 	let bodyTextArray = bodyText.split(/ |(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€|(?=\£))/g);
-	/* console.log(bodyTextArray); */
 
 	bodyTextArray.forEach((item, i) => {
 		let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
@@ -44,14 +43,17 @@ export function editText(bodyText: string) {
 		for (const [key, value] of Object.entries(allObjects)) {
 			if (item.toLowerCase() === key) {
 				bodyTextArray[i] = value;
-			} else if (specialCharacters.some((el) => item.includes(el))) {
+			} else if (specialCharacters.some((specialChar) => item === specialChar)) {
 				bodyTextArray[i - 1] += item;
 				bodyTextArray.splice(i, 1);
 				return;
 			}
 		}
+		if (/[A-Z]/gm.test(item)) {
+			bodyTextArray[i] = bodyTextArray[i].replace(bodyTextArray[i].charAt(0), bodyTextArray[i].charAt(0).toUpperCase());
+			return;
+		}
 	});
 
-	/* 	console.log(bodyTextArray.join(" ")); */
 	return bodyTextArray.join(" ");
 }
