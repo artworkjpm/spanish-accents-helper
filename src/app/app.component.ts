@@ -9,7 +9,7 @@ import { editText } from "./utilities/editText";
 })
 export class AppComponent implements OnInit {
 	title = "spanish-accents-helper";
-	test = "Gustaria darte un truco para tu Portatil, hemos enganado";
+	test = "Gustaria darte un truco para tu portatil, hemos enganado";
 	test2 = "quieria decir que el bano esta sucio y pense que veias";
 	form: FormGroup = new FormGroup({});
 	loading = false;
@@ -33,5 +33,11 @@ export class AppComponent implements OnInit {
 		inputElement.select();
 		document.execCommand("copy");
 		inputElement.setSelectionRange(0, 0);
+	}
+
+	clearInput() {
+		this.form.patchValue({
+			textBox: "",
+		});
 	}
 }
