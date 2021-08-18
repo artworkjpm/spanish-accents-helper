@@ -37,16 +37,19 @@ textarea {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	font-size: 1.4rem;
-	width: 100%;
 	height: 300px;
 	padding: 5px 10px;
+	width: 100%;
 }
 
 @media screen and (max-width: 400px) {
 	textarea {
 		font-size: 1.2rem;
 		height: 200px;
-		max-width: 100%;
+	}
+
+	button {
+		zoom: 0.6;
 	}
 }
 
