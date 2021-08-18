@@ -36,16 +36,15 @@ const allObjects = {
 
 export function editText(bodyText: string) {
 	let bodyTextArray = bodyText.split(/ |(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€|(?=\£))/g);
+	let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
 
 	bodyTextArray.forEach((item, i) => {
-		let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
-
 		for (const [key, value] of Object.entries(allObjects)) {
 			if (item.toLowerCase() === key) {
 				bodyTextArray[i] = value;
 			} else if (specialCharacters.some((specialChar) => item === specialChar)) {
 				bodyTextArray[i - 1] += item;
-				bodyTextArray.splice(i, 1);
+				bodyTextArray.slice(i, 1);
 				return;
 			}
 		}
@@ -54,6 +53,6 @@ export function editText(bodyText: string) {
 			return;
 		}
 	});
-
+	bodyTextArray = bodyTextArray.filter((item) => !specialCharacters.includes(item));
 	return bodyTextArray.join(" ");
 }
