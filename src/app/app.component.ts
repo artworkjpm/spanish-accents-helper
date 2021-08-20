@@ -9,7 +9,7 @@ import { editText } from "./utilities/editText";
 })
 export class AppComponent implements OnInit {
 	title = "spanish-accents-helper";
-	test = "Gustaria darte un truco para tu portatil, hemos enganado. futbol";
+	test = "Gustaria darte un truco para tu portatil, hemos enganado. futbol \nveias \nportatil";
 	test2 = "quieria decir que el bano esta sucio y pense que veias";
 	form: FormGroup = new FormGroup({});
 	loading = false;

@@ -35,8 +35,14 @@ const allObjects = {
 };
 
 export function editText(bodyText: string) {
-	let bodyTextArray = bodyText.split(/ |(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€|(?=\£))/g);
+	console.log(bodyText);
+
+	console.log(bodyText.split(/ /g));
+
+	let bodyTextArray = bodyText.split(/ |\r\n|\r|\n|(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€|(?=\£))/g);
 	let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
+
+	console.log(bodyTextArray);
 
 	bodyTextArray.forEach((item, i) => {
 		for (const [key, value] of Object.entries(allObjects)) {
@@ -52,7 +58,30 @@ export function editText(bodyText: string) {
 			bodyTextArray[i] = bodyTextArray[i].replace(bodyTextArray[i].charAt(0), bodyTextArray[i].charAt(0).toUpperCase());
 			return;
 		}
+		/* if (/(\r\n|\r|\n)/gm.test(item)) {
+			console.log(item.split(/(\r\n|\r|\n)/g));
+
+			return;
+		} */
 	});
 	bodyTextArray = bodyTextArray.filter((item) => !specialCharacters.includes(item));
+
+	bodyTextArray.forEach((item, i) => {
+		if (bodyTextArray[i] === "" && bodyTextArray[i + 1] !== "") {
+			bodyTextArray[i] = "\n" + bodyTextArray[i + 1];
+			bodyTextArray.splice(i + 1, 1);
+		}
+
+		if (bodyTextArray[i] === "") {
+			bodyTextArray[i] = "\n";
+		}
+
+		if (bodyTextArray[i] === "\nundefined") {
+			bodyTextArray[i] = "\n";
+		}
+	});
+
+	console.log(bodyTextArray);
+
 	return bodyTextArray.join(" ");
 }

@@ -23,15 +23,6 @@ button {
 	cursor: pointer;
 }
 
-.right {
-	float: right;
-	min-width: 80px;
-}
-
-.middle {
-	margin-left: 10px;
-}
-
 textarea {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -40,6 +31,7 @@ textarea {
 	height: 300px;
 	padding: 5px 10px;
 	width: 100%;
+	white-space: pre-wrap;
 }
 
 @media screen and (max-width: 400px) {
