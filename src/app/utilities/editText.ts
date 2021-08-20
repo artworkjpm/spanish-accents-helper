@@ -35,19 +35,14 @@ const allObjects = {
 };
 
 export function editText(bodyText: string) {
-	console.log(bodyText);
-
 	let bodyTextArray = bodyText.split(/ |(\n)|^(?:\r\n?|\n)|(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€)|(?=\£)/g);
 	bodyTextArray = bodyTextArray.filter(function (element) {
 		return element !== undefined;
 	});
-	console.log(bodyTextArray);
 
 	/* bodyTextArray = bodyText.split(/ |(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€)|(?=\£)/g); */
 
 	let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
-
-	console.log(bodyTextArray);
 
 	bodyTextArray.forEach((item, i) => {
 		for (const [key, value] of Object.entries(allObjects)) {
@@ -70,7 +65,6 @@ export function editText(bodyText: string) {
 		} */
 	});
 	bodyTextArray = bodyTextArray.filter((item) => !specialCharacters.includes(item));
-
 	bodyTextArray.forEach((item, i) => {
 		if (bodyTextArray[i] === "\n") {
 			bodyTextArray[i] = bodyTextArray[i] + bodyTextArray[i + 1];
@@ -81,8 +75,5 @@ export function editText(bodyText: string) {
 			bodyTextArray[i] = "\n";
 		}
 	});
-
-	console.log(bodyTextArray);
-
 	return bodyTextArray.join(" ");
 }
