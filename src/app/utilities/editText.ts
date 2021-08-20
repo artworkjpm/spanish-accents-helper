@@ -37,9 +37,14 @@ const allObjects = {
 export function editText(bodyText: string) {
 	console.log(bodyText);
 
-	console.log(bodyText.split(/ /g));
+	let bodyTextArray = bodyText.split(/ |(\n)|^(?:\r\n?|\n)|(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€)|(?=\£)/g);
+	bodyTextArray = bodyTextArray.filter(function (element) {
+		return element !== undefined;
+	});
+	console.log(bodyTextArray);
 
-	let bodyTextArray = bodyText.split(/ |\r\n|\r|\n|(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€|(?=\£))/g);
+	/* bodyTextArray = bodyText.split(/ |(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€)|(?=\£)/g); */
+
 	let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
 
 	console.log(bodyTextArray);
@@ -67,13 +72,9 @@ export function editText(bodyText: string) {
 	bodyTextArray = bodyTextArray.filter((item) => !specialCharacters.includes(item));
 
 	bodyTextArray.forEach((item, i) => {
-		if (bodyTextArray[i] === "" && bodyTextArray[i + 1] !== "") {
-			bodyTextArray[i] = "\n" + bodyTextArray[i + 1];
+		if (bodyTextArray[i] === "\n") {
+			bodyTextArray[i] = bodyTextArray[i] + bodyTextArray[i + 1];
 			bodyTextArray.splice(i + 1, 1);
-		}
-
-		if (bodyTextArray[i] === "") {
-			bodyTextArray[i] = "\n";
 		}
 
 		if (bodyTextArray[i] === "\nundefined") {
