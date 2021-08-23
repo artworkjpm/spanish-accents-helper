@@ -6,11 +6,11 @@ import { objectU } from "../dictionaries/objects/objectU";
 import { objVerbsCleaned } from "../dictionaries/objects/objVerbsCleaned";
 
 //á, é, í, ó, ú, ñ
-/* let Ns = a.filter((item) => item.includes("ñ"));
+/* let Ns = verbs.filter((item) => item.includes("é"));
 console.log(Ns);
 
 let keyValues: any = {};
-Ns.forEach((key, i) => (keyValues[key.toLowerCase().replace("ñ", "n")] = Ns[i].toLowerCase()));
+Ns.forEach((key, i) => (keyValues[key.toLowerCase().replace("é", "e")] = Ns[i].toLowerCase()));
 console.log(keyValues); */
 
 /* let keyValues: any = {};

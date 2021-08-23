@@ -3063,7 +3063,6 @@ export const objectI = {
 	musicomania: "musicomanía",
 	muslimico: "muslímico",
 	munequeria: "muñequería",
-	mi: "mí",
 	mia: "mía",
 	milite: "mílite",
 	mimesis: "mímesis",

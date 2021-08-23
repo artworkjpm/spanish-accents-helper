@@ -884,7 +884,6 @@ export const objectO = {
 	camellon: "camellón",
 	cameloton: "camelotón",
 	camison: "camisón",
-	camion: "camión",
 	campanologo: "campanólogo",
 	campeon: "campeón",
 	campion: "campión",
