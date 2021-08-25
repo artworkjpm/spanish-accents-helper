@@ -35,14 +35,20 @@ const allObjects = {
 };
 
 export function editText(bodyText: string) {
-	let bodyTextArray = bodyText.split(/ |(\n)|^(?:\r\n?|\n)|(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€)|(?=\£)/g);
+	let bodyTextArray = bodyText.split(/ |(\n)|^(?:\r\n?|\n)|(?=,)|(?=\.)|(?=\Bes\b)|(?=\B(?<!i)s\b)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€)|(?=\£)/g);
 	bodyTextArray = bodyTextArray.filter(function (element) {
 		return element !== undefined;
 	});
 
-	/* bodyTextArray = bodyText.split(/ |(?=,)|(?=\.)|(?=!)|(?=\?)|(?=\:)|(?=\;)|(?=\%)|(?=\#)|(?=\@)|(?=\€)|(?=\£)/g); */
+	const specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£", "es", "s"];
+	const endingCharacters = [",", "!", ".", "?", ":", ";"];
 
-	let specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£"];
+	bodyTextArray.forEach((item, i) => {
+		if (bodyTextArray[i] === "e") {
+			bodyTextArray[i] = bodyTextArray[i] += "s";
+			bodyTextArray.splice(i + 1, 1);
+		}
+	});
 
 	bodyTextArray.forEach((item, i) => {
 		for (const [key, value] of Object.entries(allObjects)) {
@@ -50,7 +56,7 @@ export function editText(bodyText: string) {
 				bodyTextArray[i] = value;
 			} else if (specialCharacters.some((specialChar) => item === specialChar)) {
 				bodyTextArray[i - 1] += item;
-				bodyTextArray.slice(i, 1);
+				/* bodyTextArray.slice(i, 1); */
 				return;
 			}
 		}
@@ -58,13 +64,20 @@ export function editText(bodyText: string) {
 			bodyTextArray[i] = bodyTextArray[i].replace(bodyTextArray[i].charAt(0), bodyTextArray[i].charAt(0).toUpperCase());
 			return;
 		}
-		/* if (/(\r\n|\r|\n)/gm.test(item)) {
-			console.log(item.split(/(\r\n|\r|\n)/g));
-
-			return;
-		} */
 	});
+
 	bodyTextArray = bodyTextArray.filter((item) => !specialCharacters.includes(item));
+	bodyTextArray.forEach((item, i) => {
+		endingCharacters.forEach((el) => {
+			if (item.charAt(item.length - 1).includes(el)) {
+				if (item.slice(-3) === "es" || item.charAt(item.length - 2) === "s") {
+					bodyTextArray[i - 1] += el;
+					bodyTextArray.splice(i, 1);
+				}
+			}
+		});
+	});
+
 	bodyTextArray.forEach((item, i) => {
 		if (bodyTextArray[i] === "\n") {
 			bodyTextArray[i] = bodyTextArray[i] + bodyTextArray[i + 1];
