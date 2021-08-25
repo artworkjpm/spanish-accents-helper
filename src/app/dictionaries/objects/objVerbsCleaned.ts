@@ -24590,7 +24590,6 @@ export const objVerbsCleaned = {
 	curare: "curaré",
 	curareis: "curaréis",
 	cure: "curé",
-	de: "dé",
 	declarare: "declararé",
 	declarareis: "declararéis",
 	declare: "declaré",
