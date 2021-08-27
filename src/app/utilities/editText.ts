@@ -52,12 +52,13 @@ export function editText(bodyText: string) {
 	});
 
 	/* 	console.log(bodyTextArray); */
-
+	//replace words missing tildes
 	bodyTextArray.forEach((item, i) => {
 		for (const [key, value] of Object.entries(allObjects)) {
 			if (item.toLowerCase() === key) {
 				bodyTextArray[i] = value;
 			} else if (specialCharacters.some((specialChar) => item === specialChar)) {
+				//if item is specialCharacter, add it to previous word
 				bodyTextArray[i - 1] += item;
 				/* bodyTextArray.slice(i, 1); */
 				return;
@@ -72,11 +73,13 @@ export function editText(bodyText: string) {
 
 	//remove special characters from array indices
 	bodyTextArray = bodyTextArray.filter((item) => !specialCharacters.includes(item));
+
 	//add onto word the plurals es and s
 	bodyTextArray.forEach((item, i) => {
 		endingCharacters.forEach((el) => {
 			if (item.charAt(item.length - 1).includes(el)) {
 				if (item.slice(-3) === "es" || item.charAt(item.length - 2) === "s") {
+					//add endingCharacter onto plural word, eg ?, .
 					bodyTextArray[i - 1] += el;
 					bodyTextArray.splice(i, 1);
 				}
