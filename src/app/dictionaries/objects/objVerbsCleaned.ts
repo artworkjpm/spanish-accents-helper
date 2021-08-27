@@ -20911,7 +20911,7 @@ export const objVerbsCleaned = {
 	hubieramostenido: "hubiéramosteñido",
 	hubieraistenido: "hubieraisteñido",
 	hubierantenido: "hubieranteñido",
-	ti: "tiñó",
+	ti: "ti",
 	tines: "tiñes",
 	tine: "tiñe",
 	tenimos: "teñimos",

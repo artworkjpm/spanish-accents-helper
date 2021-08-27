@@ -43,12 +43,15 @@ export function editText(bodyText: string) {
 	const specialCharacters = [",", "!", ".", "?", ":", ";", "%", "#", "@", "€", "£", "es", "s"];
 	const endingCharacters = [",", "!", ".", "?", ":", ";"];
 
+	//put e & s back together
 	bodyTextArray.forEach((item, i) => {
 		if (bodyTextArray[i] === "e") {
 			bodyTextArray[i] = bodyTextArray[i] += "s";
 			bodyTextArray.splice(i + 1, 1);
 		}
 	});
+
+	/* 	console.log(bodyTextArray); */
 
 	bodyTextArray.forEach((item, i) => {
 		for (const [key, value] of Object.entries(allObjects)) {
@@ -60,13 +63,16 @@ export function editText(bodyText: string) {
 				return;
 			}
 		}
+		//fix capital letters
 		if (/[A-Z]/gm.test(item)) {
 			bodyTextArray[i] = bodyTextArray[i].replace(bodyTextArray[i].charAt(0), bodyTextArray[i].charAt(0).toUpperCase());
 			return;
 		}
 	});
 
+	//remove special characters from array indices
 	bodyTextArray = bodyTextArray.filter((item) => !specialCharacters.includes(item));
+	//add onto word the plurals es and s
 	bodyTextArray.forEach((item, i) => {
 		endingCharacters.forEach((el) => {
 			if (item.charAt(item.length - 1).includes(el)) {
@@ -78,6 +84,7 @@ export function editText(bodyText: string) {
 		});
 	});
 
+	//bring back the linebreaks
 	bodyTextArray.forEach((item, i) => {
 		if (bodyTextArray[i] === "\n") {
 			bodyTextArray[i] = bodyTextArray[i] + bodyTextArray[i + 1];
